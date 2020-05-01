@@ -16,14 +16,20 @@ namespace MAS.Repositories.Repositories
         private readonly HttpClient HttpClient;
         HttpResponseMessage _response;
 
-        public EmployeeRepository()
+        public EmployeeRepository(IConfiguration configuration)
         {
+            _configuration = configuration;
+
             HttpClient = new HttpClient()
             {
                 BaseAddress = new Uri(_configuration.GetSection("ConectionString:EmployeesAPi").Value.ToString())
             };
         }
 
+        /// <summary>
+        /// Method that return List with all employees.
+        /// </summary>
+        /// <returns></returns>
         async Task<List<Employee>> IEmployeeRepository.GetAllEmployees()
         {
             _response = await HttpClient.GetAsync("Employees");
