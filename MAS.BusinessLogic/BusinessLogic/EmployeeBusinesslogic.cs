@@ -1,6 +1,7 @@
 ﻿using MAS.BusinessLogic.Factories;
 using MAS.BusinessLogic.Interfaces;
 using MAS.Models;
+using MAS.Models.ViewModel;
 using MAS.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -22,16 +23,18 @@ namespace MAS.BusinessLogic.BusinessLogic
         /// Method that return List with all employees.
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Employee>> GetAllEmployees()
+        public async Task<List<ViewModelEmployee>> GetAllEmployees()
         {
+            List<ViewModelEmployee> lstEmployees = new List<ViewModelEmployee>();
             var employeesList =  await _employeeRepository.GetAllEmployees();
 
             foreach (var employee in employeesList)
             {
-                EmployeeFactory.GetAnualSalarybyEmployee(employee);
+                var viewModelEmployee = EmployeeFactory.GetAnualSalarybyEmployee(employee);
+                lstEmployees.Add(viewModelEmployee);
             }
 
-            return employeesList;
+            return lstEmployees;
         }
 
         /// <summary>
@@ -39,12 +42,13 @@ namespace MAS.BusinessLogic.BusinessLogic
         /// </summary>
         /// <param name="employeeId">identification of employee</param>
         /// <returns></returns>
-        public async Task<Employee> GetEmployeeById(int employeeId)
+        public async Task<ViewModelEmployee> GetEmployeeById(int employeeId)
         {
             var employee = await _employeeRepository.GetEmployeeById(employeeId);
-            EmployeeFactory.GetAnualSalarybyEmployee(employee);
+            var viewModelEmployee =  EmployeeFactory.GetAnualSalarybyEmployee(employee);
 
-            return employee;
+            return viewModelEmployee;
         }
+
     }
 }

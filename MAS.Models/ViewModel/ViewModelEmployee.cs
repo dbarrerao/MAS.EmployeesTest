@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MAS.Models
+namespace MAS.Models.ViewModel
 {
-    public class Employee
+    public abstract class ViewModelEmployee
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -14,5 +14,6 @@ namespace MAS.Models
         public string RoleDescription { get; set; }
         public decimal HourlySalary { get; set; }
         public decimal MonthlySalary { get; set; }
+        public abstract decimal AnnualSalary { get;}
     }
 }

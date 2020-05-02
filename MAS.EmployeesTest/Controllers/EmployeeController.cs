@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MAS.BusinessLogic.Interfaces;
 using MAS.Models;
+using MAS.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -25,7 +26,7 @@ namespace MAS.EmployeesTest.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IEnumerable<Employee>> GetAllEmployees()
+        public async Task<IEnumerable<ViewModelEmployee>> GetAllEmployees()
         {
             return await _employeeBusinessLogic.GetAllEmployees();
         }
@@ -36,7 +37,7 @@ namespace MAS.EmployeesTest.Controllers
         /// <param name="employeeId"></param>
         /// <returns></returns>
         [HttpGet("{employeeId}")]
-        public async Task<Employee> GetEmployeeById(int employeeId)
+        public async Task<ViewModelEmployee> GetEmployeeById(int employeeId)
         {
             return await _employeeBusinessLogic.GetEmployeeById(employeeId);
         }

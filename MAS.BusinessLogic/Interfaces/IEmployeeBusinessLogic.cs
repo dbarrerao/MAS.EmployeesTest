@@ -1,4 +1,5 @@
 ﻿using MAS.Models;
+using MAS.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +9,7 @@ namespace MAS.BusinessLogic.Interfaces
 {
     public interface IEmployeeBusinessLogic
     {
-        Task<List<Employee>> GetAllEmployees();
-        Task<Employee> GetEmployeeById(int employeeId);
+        Task<List<ViewModelEmployee>> GetAllEmployees();
+        Task<ViewModelEmployee> GetEmployeeById(int employeeId);
     }
 }
