@@ -14,5 +14,6 @@ namespace MAS.Models
         public string RoleDescription { get; set; }
         public decimal HourlySalary { get; set; }
         public decimal MonthlySalary { get; set; }
+        public decimal AnualSalary { get; set; }
     }
 }

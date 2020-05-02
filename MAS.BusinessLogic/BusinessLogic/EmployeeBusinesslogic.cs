@@ -1,4 +1,5 @@
-﻿using MAS.BusinessLogic.Interfaces;
+﻿using MAS.BusinessLogic.Factories;
+using MAS.BusinessLogic.Interfaces;
 using MAS.Models;
 using MAS.Repositories.Interfaces;
 using System;
@@ -23,7 +24,14 @@ namespace MAS.BusinessLogic.BusinessLogic
         /// <returns></returns>
         public async Task<List<Employee>> GetAllEmployees()
         {
-            return await _employeeRepository.GetAllEmployees();
+            var employeesList =  await _employeeRepository.GetAllEmployees();
+
+            foreach (var employee in employeesList)
+            {
+                EmployeeFactory.GetAnualSalarybyEmployee(employee);
+            }
+
+            return employeesList;
         }
 
         /// <summary>
@@ -33,7 +41,10 @@ namespace MAS.BusinessLogic.BusinessLogic
         /// <returns></returns>
         public async Task<Employee> GetEmployeeById(int employeeId)
         {
-            return await _employeeRepository.GetEmployeeById(employeeId);
+            var employee = await _employeeRepository.GetEmployeeById(employeeId);
+            EmployeeFactory.GetAnualSalarybyEmployee(employee);
+
+            return employee;
         }
     }
 }
