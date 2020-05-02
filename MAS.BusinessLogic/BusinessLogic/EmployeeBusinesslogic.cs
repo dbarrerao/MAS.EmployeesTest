@@ -21,9 +21,19 @@ namespace MAS.BusinessLogic.BusinessLogic
         /// Method that return List with all employees.
         /// </summary>
         /// <returns></returns>
-        async Task<List<Employee>> IEmployeeBusinessLogic.GetAllEmployees()
+        public async Task<List<Employee>> GetAllEmployees()
         {
             return await _employeeRepository.GetAllEmployees();
+        }
+
+        /// <summary>
+        /// Get an employee from the ID.
+        /// </summary>
+        /// <param name="employeeId">identification of employee</param>
+        /// <returns></returns>
+        public async Task<Employee> GetEmployeeById(int employeeId)
+        {
+            return await _employeeRepository.GetEmployeeById(employeeId);
         }
     }
 }

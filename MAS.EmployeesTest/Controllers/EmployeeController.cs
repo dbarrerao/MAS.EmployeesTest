@@ -20,36 +20,25 @@ namespace MAS.EmployeesTest.Controllers
             _employeeBusinessLogic = employeeBusinessLogic;
         }
 
-        // GET: api/<controller>
+        /// <summary>
+        /// Get list with all employees
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<Employee>> GetAllEmployees()
         {
             return await _employeeBusinessLogic.GetAllEmployees();
         }
 
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        /// <summary>
+        /// Get an employee from the ID
+        /// </summary>
+        /// <param name="employeeId"></param>
+        /// <returns></returns>
+        [HttpGet("{employeeId}")]
+        public async Task<Employee> GetEmployeeById(int employeeId)
         {
-            return "value";
-        }
-
-        // POST api/<controller>
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return await _employeeBusinessLogic.GetEmployeeById(employeeId);
         }
     }
 }

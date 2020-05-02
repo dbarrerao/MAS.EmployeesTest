@@ -9,5 +9,6 @@ namespace MAS.BusinessLogic.Interfaces
     public interface IEmployeeBusinessLogic
     {
         Task<List<Employee>> GetAllEmployees();
+        Task<Employee> GetEmployeeById(int employeeId);
     }
 }

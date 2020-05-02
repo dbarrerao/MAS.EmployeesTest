@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,13 +31,23 @@ namespace MAS.Repositories.Repositories
         /// Method that return List with all employees.
         /// </summary>
         /// <returns></returns>
-        async Task<List<Employee>> IEmployeeRepository.GetAllEmployees()
+        public async Task<List<Employee>> GetAllEmployees()
         {
             _response = await HttpClient.GetAsync("Employees");
             var result = await _response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<List<Employee>>(result);
         }
 
+        /// <summary>
+        /// Get an employee from the ID.
+        /// </summary>
+        /// <param name="employeeId">identification of employee</param>
+        /// <returns></returns>
+        public async Task<Employee> GetEmployeeById(int employeeId)
+        {
+            var employees = await GetAllEmployees();
+            return employees.SingleOrDefault(x => x.Id == employeeId);
+        }
     }
 }
 
