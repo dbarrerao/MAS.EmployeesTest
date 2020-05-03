@@ -5,34 +5,41 @@
 
 <div class="container py-5">
     <div class="row">
+        <div class="col-md-11 mx-auto">
+            <div class="form-group row">
+                <br>
+                <h1 style="text-align:center; color:cadetblue"><srtong>Employees</srtong></h1>
+                <br>
+                <br>
+                <div class="col-sm-6">
+                    <input placeholder="Employee ID" id="txtEmployeeId" class="form-control mr-sm-2">
+                </div>
+                <div class="col-sm-6">
+                    <button id="btnSearch" type="button" class="btn backgroundControl my-2 my-sm-0">Get Employees</button>
+                </div>
+            </div>
+        </div>
+    </div>     
+    <div class="row" id="idTable">
         <div class="col-md-10 mx-auto">
-            @using (Html.BeginForm("Employee", "Home", FormMethod.Post, new { @id = "frmEmployee", @name = "frmEmployee", @class = "form-horizontal" }))
-            {
-                <h5 style="text-align:center;"><srtong>Employees</srtong></h5>
-
-                <div class="col-sm-6">
-                    <input placeholder="Employee ID" id="txtEmployeeId">
-                </div>
-                <div class="col-sm-6">
-                    <button id="btnSearch" type="button">Get Employees</button>
-                </div>
-                <div>
-                    <table id="Table">
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <table class="table table-striped" id="Table" data-paging="true" data-paging-count-format="{CP} de {TP}" data-paging-size="5">
                         <tr>
-                            <th>Name</th>
-                            <th>Contract Type</th>
-                            <th>Role ID</th>
-                            <th>Role Name</th>
-                            <th>Role Description</th>
-                            <th>Hourly Salary</th>
-                            <th>Monthly Salary</th>
-                            <th>Annual Salary</th>                            
+                            <th class="backgroundControl text-center">Name</th>
+                            <th class="backgroundControl text-center">Contract Type</th>
+                            <th class="backgroundControl text-center">Role ID</th>
+                            <th class="backgroundControl text-center">Role Name</th>
+                            <th class="backgroundControl text-center">Role Description</th>
+                            <th class="backgroundControl text-center">Hourly Salary</th>
+                            <th class="backgroundControl text-center">Monthly Salary</th>
+                            <th class="backgroundControl text-center">Annual Salary</th>
                         </tr>
                     </table>
                 </div>
-            }
+            </div>
         </div>
-    </div>
+    </div> 
 </div>
 <script type="text/javascript">
 
@@ -63,23 +70,28 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
-                debugger;
-                $('#idTable').show(); 
-                $.each(data, function (i, item) {                   
-                    var rows =
-                        "<tr>" +
-                        "<td id='Name'>" + item.name + "</td>" +
-                        "<td id='ContractTypeName'>" + item.contractTypeName + "</td>" + 
-                        "<td id='RoleId'>" + item.roleId + "</td>" +
-                        "<td id='RoleName'>" + item.roleName + "</td>" + 
-                        "<td id='RoleDescription'>" + item.roleDescription + "</td>" +
-                        "<td id='HourlySalary'>" + item.hourlySalary + "</td>" + 
-                        "<td id='MonthlySalary'>" + item.monthlySalary + "</td>" +
-                        "<td id='AnnualSalary'>" + item.annualSalary + "</td>" + 
-                        "</tr>";                    
-                    $('#Table').append(rows);                    
-                });        
-            }            
+                if (data != null) {
+                    $('#idTable').show();
+                    $.each(data, function (i, item) {
+                        var rows =
+                            "<tr>" +
+                            "<td id='Name'>" + item.name + "</td>" +
+                            "<td id='ContractTypeName'>" + item.contractTypeName + "</td>" +
+                            "<td id='RoleId'>" + item.roleId + "</td>" +
+                            "<td id='RoleName'>" + item.roleName + "</td>" +
+                            "<td id='RoleDescription'>" + item.roleDescription + "</td>" +
+                            "<td id='HourlySalary'>" + item.hourlySalary + "</td>" +
+                            "<td id='MonthlySalary'>" + item.monthlySalary + "</td>" +
+                            "<td id='AnnualSalary'>" + item.annualSalary + "</td>" +
+                            "</tr>";
+                        $('#Table').append(rows);
+                    });
+                }
+                else
+                {
+                    MessageConfirmation("Register not found.");
+                }
+            }      
         });
     }
 
@@ -90,7 +102,8 @@
             url: "/api/Employee/" + employeeId,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            success: function (data) {                  
+            success: function (data) {
+                debugger;
                 $("#idTable").find("tr:gt(0)").remove();
                 if (data != null) {
                     $('#idTable').show();                  
@@ -107,8 +120,18 @@
                         "</tr>";                    
                     $('#Table').append(rows); 
                 }
+                else
+                {
+                    debugger;
+                    MessageConfirmation("Register not found.");
+                }
             }
         });
     }
 
+    function MessageConfirmation(message)
+    {
+        debugger;
+      alert(message);
+    }
 </script>

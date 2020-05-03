@@ -35,3 +35,12 @@ body {
         display: none;
     }
 }
+
+.backgroundControl {
+    background-color: #0CA785;
+    color: white;
+}
+
+.bg-dark {
+    background-color: #0CA785 !important;
+}
