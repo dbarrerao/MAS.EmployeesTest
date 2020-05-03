@@ -10,6 +10,12 @@ namespace MAS.EmployeesTest.Controllers
 {
     public class HomeController : Controller
     {
+        public IActionResult Employee()
+        {
+            return View();
+        }
+
+
         public IActionResult Index()
         {
             return View();

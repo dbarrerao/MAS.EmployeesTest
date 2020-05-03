@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model MAS.Models.ViewModel.ViewModelEmployee;
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            @using (Html.BeginForm("Employee", "Home", FormMethod.Post, new { @id = "frmEmployee", @name = "frmEmployee", @class = "form-horizontal" }))
+            {
+                <h5 style="text-align:center;"><srtong>Employees</srtong></h5>
+            }
+        </div>
+    </div>
+</div>
