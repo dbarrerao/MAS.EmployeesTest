@@ -26,6 +26,7 @@
                 <div class="col-sm-12">
                     <table class="table table-striped" id="Table" data-paging="true" data-paging-count-format="{CP} de {TP}" data-paging-size="5">
                         <tr>
+                            <th class="backgroundControl text-center">ID</th>
                             <th class="backgroundControl text-center">Name</th>
                             <th class="backgroundControl text-center">Contract Type</th>
                             <th class="backgroundControl text-center">Role ID</th>
@@ -51,6 +52,7 @@
             var employeeId = $("#txtEmployeeId").val();
             employeeId = Number(employeeId);
 
+            $("body").loading('start');
             if (employeeId == "")
             {
                 GetAllEmployees();                
@@ -62,36 +64,27 @@
     });
 
     /// Function that return the information of all employees and display it in a table.
-    function GetAllEmployees() {      
-        debugger;
+    function GetAllEmployees() { 
         $.ajax({
             type: "GET",
             url: "/api/Employee",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
+                $("#idTable").find("tr:gt(0)").remove();
                 if (data != null) {
                     $('#idTable').show();
                     $.each(data, function (i, item) {
-                        var rows =
-                            "<tr>" +
-                            "<td id='Name'>" + item.name + "</td>" +
-                            "<td id='ContractTypeName'>" + item.contractTypeName + "</td>" +
-                            "<td id='RoleId'>" + item.roleId + "</td>" +
-                            "<td id='RoleName'>" + item.roleName + "</td>" +
-                            "<td id='RoleDescription'>" + item.roleDescription + "</td>" +
-                            "<td id='HourlySalary'>" + item.hourlySalary + "</td>" +
-                            "<td id='MonthlySalary'>" + item.monthlySalary + "</td>" +
-                            "<td id='AnnualSalary'>" + item.annualSalary + "</td>" +
-                            "</tr>";
-                        $('#Table').append(rows);
+                        displayInformation(item)
                     });
                 }
-                else
-                {
+                else {
                     MessageConfirmation("Register not found.");
                 }
-            }      
+            },
+            complete: function (xhr, status) {
+                $("body").loading('stop');
+            }
         });
     }
 
@@ -102,36 +95,44 @@
             url: "/api/Employee/" + employeeId,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            success: function (data) {
-                debugger;
+            success: function (data) {               
                 $("#idTable").find("tr:gt(0)").remove();
                 if (data != null) {
                     $('#idTable').show();                  
-                    var rows =
-                        "<tr>" +
-                        "<td id='Name'>" + data.name + "</td>" +
-                        "<td id='ContractTypeName'>" + data.contractTypeName + "</td>" + 
-                        "<td id='RoleId'>" + data.roleId + "</td>" +
-                        "<td id='RoleName'>" + data.roleName + "</td>" + 
-                        "<td id='RoleDescription'>" + data.roleDescription + "</td>" +
-                        "<td id='HourlySalary'>" + data.hourlySalary + "</td>" + 
-                        "<td id='MonthlySalary'>" + data.monthlySalary + "</td>" +
-                        "<td id='AnnualSalary'>" + data.annualSalary + "</td>" + 
-                        "</tr>";                    
-                    $('#Table').append(rows); 
+                    displayInformation(data)
                 }
                 else
                 {
-                    debugger;
                     MessageConfirmation("Register not found.");
                 }
+            },
+            complete: function (xhr, status) {
+               $("body").loading('stop');
             }
         });
     }
 
+    function displayInformation(data)
+    {        
+        var rows =
+            "<tr>" +
+            "<td id='Name'>" + data.id + "</td>" +
+            "<td id='Name'>" + data.name + "</td>" +
+            "<td id='ContractTypeName'>" + data.contractTypeName + "</td>" + 
+            "<td id='RoleId'>" + data.roleId + "</td>" +
+            "<td id='RoleName'>" + data.roleName + "</td>" + 
+            "<td id='RoleDescription'>" + data.roleDescription + "</td>" +
+            "<td id='HourlySalary'>" + data.hourlySalary + "</td>" + 
+            "<td id='MonthlySalary'>" + data.monthlySalary + "</td>" +
+            "<td id='AnnualSalary'>" + data.annualSalary + "</td>" + 
+            "</tr>";                    
+        $('#Table').append(rows); 
+    }
+
+
     function MessageConfirmation(message)
-    {
-        debugger;
+    {      
+      $('#idTable').hide();
       alert(message);
     }
 </script>

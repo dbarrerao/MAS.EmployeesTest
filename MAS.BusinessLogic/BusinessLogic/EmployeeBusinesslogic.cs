@@ -44,8 +44,9 @@ namespace MAS.BusinessLogic.BusinessLogic
         /// <returns></returns>
         public async Task<ViewModelEmployee> GetEmployeeById(int employeeId)
         {
-            var employee = await _employeeRepository.GetEmployeeById(employeeId);
-            var viewModelEmployee =  EmployeeFactory.GetAnualSalarybyEmployee(employee);
+           var employee = await _employeeRepository.GetEmployeeById(employeeId);           
+          
+           var viewModelEmployee =  employee != null ? EmployeeFactory.GetAnualSalarybyEmployee(employee) : null;
 
             return viewModelEmployee;
         }
