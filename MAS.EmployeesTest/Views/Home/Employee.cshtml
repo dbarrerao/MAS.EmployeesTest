@@ -34,3 +34,54 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+
+    $(document).ready(function () {   
+
+        $('#idTable').hide();
+
+        $("#btnSearch").on("click", function () {
+            var employeeId = $("#txtEmployeeId").val();
+            employeeId = Number(employeeId);
+
+            if (employeeId == "")
+            {
+                GetAllEmployees();                
+            } else
+            {
+                                 
+            }            
+        });
+    });
+
+    function GetAllEmployees() {      
+        debugger;
+        $.ajax({
+            type: "GET",
+            url: "/api/Employee",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                debugger;
+                $('#idTable').show(); 
+                $.each(data, function (i, item) {                   
+                    var rows =
+                        "<tr>" +
+                        "<td id='Name'>" + item.name + "</td>" +
+                        "<td id='ContractTypeName'>" + item.contractTypeName + "</td>" + 
+                        "<td id='RoleId'>" + item.roleId + "</td>" +
+                        "<td id='RoleName'>" + item.roleName + "</td>" + 
+                        "<td id='RoleDescription'>" + item.roleDescription + "</td>" +
+                        "<td id='HourlySalary'>" + item.hourlySalary + "</td>" + 
+                        "<td id='MonthlySalary'>" + item.monthlySalary + "</td>" +
+                        "<td id='AnnualSalary'>" + item.annualSalary + "</td>" + 
+                        "</tr>";                    
+                    $('#Table').append(rows);                    
+                });        
+            },
+            complete: function (xhr, status) {
+                    $("body").loading('stop');
+                }
+        });
+    }
+</script>
