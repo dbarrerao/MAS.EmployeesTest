@@ -9,6 +9,27 @@
             @using (Html.BeginForm("Employee", "Home", FormMethod.Post, new { @id = "frmEmployee", @name = "frmEmployee", @class = "form-horizontal" }))
             {
                 <h5 style="text-align:center;"><srtong>Employees</srtong></h5>
+
+                <div class="col-sm-6">
+                    <input placeholder="Employee ID" id="txtEmployeeId">
+                </div>
+                <div class="col-sm-6">
+                    <button id="btnSearch" type="button">Get Employees</button>
+                </div>
+                <div>
+                    <table id="Table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Contract Type</th>
+                            <th>Role ID</th>
+                            <th>Role Name</th>
+                            <th>Role Description</th>
+                            <th>Hourly Salary</th>
+                            <th>Monthly Salary</th>
+                            <th>Annual Salary</th>                            
+                        </tr>
+                    </table>
+                </div>
             }
         </div>
     </div>
