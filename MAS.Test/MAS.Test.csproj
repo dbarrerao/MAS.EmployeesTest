@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BusinessLogic\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MAS.BusinessLogic\MAS.BusinessLogic.csproj" />
     <ProjectReference Include="..\MAS.Repositories\MAS.Repositories.csproj" />
   </ItemGroup>
