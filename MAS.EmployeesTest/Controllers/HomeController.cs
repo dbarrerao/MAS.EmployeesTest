@@ -23,14 +23,14 @@ namespace MAS.EmployeesTest.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Technical Test for MASGlobal Consulting.";
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Diego Alejandro Barrera Ocampo";
 
             return View();
         }
