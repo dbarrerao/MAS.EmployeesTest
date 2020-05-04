@@ -143,13 +143,18 @@
             "<td id='RoleId'>" + data.roleId + "</td>" +
             "<td id='RoleName'>" + data.roleName + "</td>" + 
             "<td id='RoleDescription'>" + data.roleDescription + "</td>" +
-            "<td id='HourlySalary'>" + data.hourlySalary + "</td>" + 
-            "<td id='MonthlySalary'>" + data.monthlySalary + "</td>" +
-            "<td id='AnnualSalary'>" + data.annualSalary + "</td>" + 
+            "<td id='HourlySalary'>" + currencyFormat(data.hourlySalary, '$ ') + "</td>" + 
+            "<td id='MonthlySalary'>" + currencyFormat(data.monthlySalary, '$ ') + "</td>" +
+            "<td id='AnnualSalary'>" + currencyFormat(data.annualSalary, '$ ') + "</td>" + 
             "</tr>";                    
         $('#Table').append(rows); 
     }
 
+    function currencyFormat(n, currency) {
+      return currency + n.toFixed(2).replace(/./g, function(c, i, a) {
+      return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+  });
+}
 
     function MessageNotFound(message)
     {      
