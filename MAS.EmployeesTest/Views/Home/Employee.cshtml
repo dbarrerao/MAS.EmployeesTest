@@ -64,6 +64,7 @@
 
         $('#idTable').hide();
 
+        /// Search all employees or an specific employee by your ID.
         $("#btnSearch").on("click", function () {
             var employeeId = $("#txtEmployeeId").val();
             employeeId = Number(employeeId);
@@ -78,7 +79,7 @@
             }            
         });
 
-        // Close modal when close button is clicked.
+        /// Close modal when close button is clicked.
         $("#closeModal").on("click", function () {
              $("#notfound").modal("hide");
         });
@@ -96,7 +97,7 @@
                 if (data != null) {
                     $('#idTable').show();
                     $.each(data, function (i, item) {
-                        displayInformation(item)
+                        displayInformation(item);
                     });
                 }
                 else {
@@ -133,6 +134,7 @@
         });
     }
 
+    /// To addition information of employee in table.
     function displayInformation(data)
     {        
         var rows =
@@ -150,12 +152,14 @@
         $('#Table').append(rows); 
     }
 
+    /// to Add currency format a number.
     function currencyFormat(n, currency) {
-      return currency + n.toFixed(2).replace(/./g, function(c, i, a) {
-      return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
-  });
-}
+          return currency + n.toFixed(2).replace(/./g, function(c, i, a) {
+          return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+        });
+    }
 
+    /// Information to display in modal.
     function MessageNotFound(message)
     {      
         $("#idTable").hide();
@@ -164,7 +168,7 @@
         showModal(title, body);
     }
 
-
+    /// Show modal to alert user of someting
     function showModal(title, body)
     {
         $("#notfound").modal("show");
