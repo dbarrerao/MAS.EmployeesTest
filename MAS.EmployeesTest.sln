@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAS.EmployeesTest", "MAS.EmployeesTest\MAS.EmployeesTest.csproj", "{E5AFA361-CA0A-42B7-A55F-C2688B886AB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MAS.EmployeesTest", "MAS.EmployeesTest\MAS.EmployeesTest.csproj", "{E5AFA361-CA0A-42B7-A55F-C2688B886AB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAS.Models", "MAS.Models\MAS.Models.csproj", "{424B4D0D-5E77-4598-A774-2BF6BD87E70B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MAS.Models", "MAS.Models\MAS.Models.csproj", "{424B4D0D-5E77-4598-A774-2BF6BD87E70B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAS.BusinessLogic", "MAS.BusinessLogic\MAS.BusinessLogic.csproj", "{F9EAE169-7337-46C5-99B4-41F918985748}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MAS.BusinessLogic", "MAS.BusinessLogic\MAS.BusinessLogic.csproj", "{F9EAE169-7337-46C5-99B4-41F918985748}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAS.Repositories", "MAS.Repositories\MAS.Repositories.csproj", "{EBEF23AE-5221-4682-9DF9-EE0489458D5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MAS.Repositories", "MAS.Repositories\MAS.Repositories.csproj", "{EBEF23AE-5221-4682-9DF9-EE0489458D5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAS.Test", "MAS.Test\MAS.Test.csproj", "{92C1D9EC-E5CF-438E-9DF5-5B432475EBDF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{EBEF23AE-5221-4682-9DF9-EE0489458D5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBEF23AE-5221-4682-9DF9-EE0489458D5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBEF23AE-5221-4682-9DF9-EE0489458D5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92C1D9EC-E5CF-438E-9DF5-5B432475EBDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92C1D9EC-E5CF-438E-9DF5-5B432475EBDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92C1D9EC-E5CF-438E-9DF5-5B432475EBDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92C1D9EC-E5CF-438E-9DF5-5B432475EBDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
